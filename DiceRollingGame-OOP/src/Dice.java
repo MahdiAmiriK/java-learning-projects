@@ -6,7 +6,7 @@ public class Dice {
     private int min = 1, max = 6;
 
     public int diceRolling(){
-        int diceNumber = random.nextInt((max - min +1) + min);
+        int diceNumber = random.nextInt(max - min +1) + min;
         return diceNumber;
     }
 }
