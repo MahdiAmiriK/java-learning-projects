@@ -8,7 +8,8 @@ public class Main {
         System.out.println("***** Welcome to simple 'Math Quiz Game'*****");
         System.out.println("Please answer these five questions");
         MathQuiz quiz = new MathQuiz(scanner);
-        quiz.startQuiz();
+        int score = quiz.startQuiz();
+        System.out.println("Your score is " + score + "/5");
         scanner.close();
     }
 }
