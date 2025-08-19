@@ -1,7 +1,14 @@
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
+import java.util.Scanner;
+
+
 public class Main {
     public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
 
+        System.out.println("***** Welcome to simple 'Math Quiz Game'*****");
+        System.out.println("Please answer these five questions");
+        MathQuiz quiz = new MathQuiz(scanner);
+        quiz.startQuiz();
+        scanner.close();
     }
 }
