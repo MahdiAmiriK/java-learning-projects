@@ -13,10 +13,10 @@ public class Question {
 
     // create a random question
     private Object[] generateQuestion(){
-        double num1 = num.nextDouble(1000);
-        double num2;
+        int num1 = num.nextInt(1000);
+        int num2;
         do{
-            num2 = num.nextDouble(1000);
+            num2 = num.nextInt(1000);
         } while (num2 == 0);
 
         int operatorIndex = num.nextInt(4);
@@ -27,7 +27,7 @@ public class Question {
             case '+' -> num1 + num2;
             case '-' -> num1 - num2;
             case '*' -> num1 * num2;
-            case '/' -> Math.round((num1 / num2) * 100.0) / 100.0;
+            case '/' -> Math.round(((double)num1 / (double) num2) * 100.0) / 100.0;
             default -> 0;
         };
         return new Object[] {num1, num2, operator, answer};
@@ -37,11 +37,11 @@ public class Question {
         Object[] questionElements = generateQuestion();
         double answer = (double) questionElements[3];
 
-        System.out.printf("%.2f %c %.2f = ", (double) questionElements[0], (char) questionElements[2], (double) questionElements[1]);
+        System.out.printf("%d %c %d = ", (int) questionElements[0], (char) questionElements[2], (int) questionElements[1]);
         double userInput = scanner.nextDouble();
 
         // tolerance
-        double epsilon = 1e-6;
+        double epsilon = 1e-2;
         return Math.abs(userInput - answer) < epsilon;
     }
 
