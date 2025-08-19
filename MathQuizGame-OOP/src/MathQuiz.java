@@ -22,7 +22,7 @@ public class MathQuiz {
 
             System.out.printf("%d %c %d = ", num1, operator, num2);
             while (!scanner.hasNextDouble()) {
-                System.out.println("Please enter a valid number:");
+                System.out.println("Please enter a valid number: ");
                 scanner.next(); // skip invalid input
             }
             double userInput = scanner.nextDouble();
