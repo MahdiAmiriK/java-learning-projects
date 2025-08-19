@@ -1,18 +1,15 @@
 import java.util.Random;
-import java.util.Scanner;
+
 
 public class Question {
-    private final Scanner scanner;
-    public Question(Scanner scanner){
-        this.scanner = scanner;
-    }
+
 
     private static final char[] operators = {'+', '-' , '*', '/'};
 
     private final Random num = new Random();
 
     // create a random question
-    private Object[] generateQuestion(){
+    public Object[] generateQuestion(){
         int num1 = num.nextInt(1000);
         int num2;
         do{
@@ -32,14 +29,8 @@ public class Question {
         };
         return new Object[] {num1, num2, operator, answer};
     }
-    // ask question and check answer
-    public boolean question(){
-        Object[] questionElements = generateQuestion();
-        double answer = (double) questionElements[3];
 
-        System.out.printf("%d %c %d = ", (int) questionElements[0], (char) questionElements[2], (int) questionElements[1]);
-        double userInput = scanner.nextDouble();
-
+    public boolean validateQuestion(double userInput, double answer){
         // tolerance
         double epsilon = 1e-2;
         return Math.abs(userInput - answer) < epsilon;
