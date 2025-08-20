@@ -17,6 +17,7 @@ public class Game {
     Dice dice1 = new Dice();
     Dice dice2 = new Dice();
 
+    // Roll two dice and return their values
     private int[] rollDices(){
         int diceNum1 = dice1.diceRolling();
         int diceNum2 = dice2.diceRolling();
@@ -24,6 +25,7 @@ public class Game {
         return result;
     }
 
+    // Start the game loop
     public void gameStart(){
         int targetScore = random.nextInt(11) + 2;
         System.out.println("Target score is " + targetScore);
@@ -37,10 +39,9 @@ public class Game {
             if(score == targetScore){
                 System.out.println("Congrats! You win the game.");
                 System.out.println("Target score was " + targetScore + " and you roll " + dice[0] + " and " + dice[1]);
-                break;
+                System.exit(0); // End program when player wins
             } else if (dice[0] == dice[1]) {
                 System.out.println("You roll a double (" + dice[0] + " and " + dice[1] + ") and you can roll again.");
-                continue;
             } else{
                 System.out.println("Oops! You lose.");
                 System.out.println("Target score was " + targetScore + " and you roll " + dice[0] + " and " + dice[1]);
