@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 
 public class BankService {
-    private ArrayList<BankAccount> accounts = new ArrayList<>();
+    private final ArrayList<BankAccount> accounts = new ArrayList<>();
 
     public BankAccount createSavingsAccount(String accountHolderName, double initialDeposit){
         BankAccount account = new SavingsAccount(accountHolderName, initialDeposit);
@@ -25,19 +25,35 @@ public class BankService {
     }
 
     public boolean deposit(String accountNumber, double amount){
-        for(BankAccount account : accounts){
-            if(account.getAccountNumber().equals(accountNumber)){
-                double beforeBalance = account.getBalance();
-                account.deposit(amount);
-                double afterBalance = account.getBalance();
-                if(beforeBalance == afterBalance){
-                    return true;
-                }
-            }else {
-                return false;
-            }
+        BankAccount account = findBankAccount(accountNumber);
+        if(account == null || amount <=0){
+            return false;
+        }
+        account.deposit(amount);
+        return true;
+    }
+
+    public boolean withdraw(String accountNumber, double amount) {
+        BankAccount account = findBankAccount(accountNumber);
+        if(account == null || amount <=0){
+            return false;
+        }
+        double beforeBalance = account.getBalance();
+        account.withdraw(amount);
+        double afterBalance = account.getBalance();
+        if(beforeBalance != afterBalance){
+            return true;
         }
         return false;
+    }
+
+    public Double getBalance(String accountNumber) {
+        BankAccount account = findBankAccount(accountNumber);
+        if(account == null){
+            return null;
+        } else {
+            return account.getBalance();
+        }
     }
 
 }
