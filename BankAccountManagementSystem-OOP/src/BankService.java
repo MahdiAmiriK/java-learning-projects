@@ -1,6 +1,7 @@
 import java.util.ArrayList;
 
 public class BankService {
+    // Stores all created bank accounts
     private final ArrayList<BankAccount> accounts = new ArrayList<>();
 
     public BankAccount createSavingsAccount(String accountHolderName, double initialDeposit){
@@ -15,6 +16,7 @@ public class BankService {
         return account;
     }
 
+    // Search for an account by its account number
     public BankAccount findBankAccount(String accountNumber){
         for(BankAccount account : accounts){
             if(account.getAccountNumber().equals(accountNumber)){
@@ -24,6 +26,7 @@ public class BankService {
         return null;
     }
 
+    // Deposit money into an account; return true if successful
     public boolean deposit(String accountNumber, double amount){
         BankAccount account = findBankAccount(accountNumber);
         if(account == null || amount <=0){
@@ -33,6 +36,7 @@ public class BankService {
         return true;
     }
 
+    // Withdraw money from an account; return true if balance actually changed
     public boolean withdraw(String accountNumber, double amount) {
         BankAccount account = findBankAccount(accountNumber);
         if(account == null || amount <=0){
@@ -41,12 +45,10 @@ public class BankService {
         double beforeBalance = account.getBalance();
         account.withdraw(amount);
         double afterBalance = account.getBalance();
-        if(beforeBalance != afterBalance){
-            return true;
-        }
-        return false;
+        return beforeBalance != afterBalance;
     }
 
+    // Get the balance of an account, or null if account not found
     public Double getBalance(String accountNumber) {
         BankAccount account = findBankAccount(accountNumber);
         if(account == null){

@@ -15,10 +15,9 @@ public class SavingsAccount extends BankAccount{
             System.out.println("Withdrawal amount must be positive.");
             return;
         }
-
         // Ensure minimum balance of $100
         if(getBalance() - amount >= 100){
-            setBalance(getBalance() - amount);
+            applyTransaction(-1 * amount);
         } else {
             System.out.println("Unacceptable fund. Minimum balance of $100 required.");
         }

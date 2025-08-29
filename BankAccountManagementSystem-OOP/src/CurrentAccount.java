@@ -18,7 +18,7 @@ public class CurrentAccount extends BankAccount{
 
         // Allow withdrawal as long as balance does not drop below -500
         if(getBalance() - amount >= -500){
-            setBalance(getBalance() - amount);
+            applyTransaction(-1 * amount);
         } else {
             System.out.println("Overdraft limit exceeded.");
         }
