@@ -1,23 +1,22 @@
 public abstract class BankAccount {
-    private final String accountNumber;
 
-    // Static counter to generate sequential account numbers
-    private static int accountCounter = 1000;
+    private final String accountNumber;
     private double balance;
     private String accountHolderName;
 
-   public BankAccount(String accountHolderName, double balance){
-       setBalance(balance);
+   public BankAccount(String accountNumber, String accountHolderName, double initialDeposit){
+       this.accountNumber = accountNumber;
+       setBalance(initialDeposit);
        setAccountHolderName(accountHolderName);
-       this.accountNumber = "ACC" + accountCounter++;
    }
 
-    protected void setBalance(double balance){
-        if(balance >= 0){
-            this.balance = balance;
+
+    protected void setBalance(double initialDeposit){
+        if(initialDeposit >= 0){
+            balance = initialDeposit;
         } else {
             System.out.println("Unacceptable balance");
-            this.balance = 0.0;
+            balance = 0.0;
         }
     }
 
@@ -32,8 +31,6 @@ public abstract class BankAccount {
     public void deposit(double amount){
         if(amount > 0){
             balance += amount;
-        } else {
-            System.out.println("Unacceptable deposit!");
         }
     }
 
