@@ -58,4 +58,14 @@ public class BankService {
         }
     }
 
+    // Get the transaction history of an account, or null if account not found
+    public ArrayList<double[]> transactionHistory(String accountNumber){
+        BankAccount account = findBankAccount(accountNumber);
+        if(account == null){
+            return null;
+        } else {
+            return account.getHistory();
+        }
+    }
+
 }
