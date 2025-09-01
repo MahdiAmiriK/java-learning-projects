@@ -5,7 +5,7 @@ public abstract class BankAccount {
     private final String accountNumber;
     private double balance = 0;
     private String accountHolderName;
-    private ArrayList<double[]> TransactionHistory = new ArrayList<>();
+    private final ArrayList<double[]> TransactionHistory = new ArrayList<>();
 
    public BankAccount(String accountNumber, String accountHolderName, double initialDeposit){
        this.accountNumber = accountNumber;
