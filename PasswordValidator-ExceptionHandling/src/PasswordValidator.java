@@ -1,6 +1,10 @@
 public class PasswordValidator {
 
-
+    /**
+     * Validates password strength and equality with confirmPassword.
+     * @throws WeakPasswordException if rules are not met
+     * @throws PasswordMismatchException if password != confirmPassword
+     */
     public void validatePassword(String password, String confirmPassword) throws WeakPasswordException, PasswordMismatchException{
         if(password.length() < 8){
             throw new WeakPasswordException("Password must be at least 8 chars long.");

@@ -14,5 +14,7 @@ public class Main {
 
         UserRegistration registration = new UserRegistration();
         registration.registerUser(password, confirm);
+
+        scanner.close();
     }
 }

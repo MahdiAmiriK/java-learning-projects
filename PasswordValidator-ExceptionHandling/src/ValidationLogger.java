@@ -1,5 +1,6 @@
 public class ValidationLogger implements AutoCloseable {
 
+    // Ensures the completion message prints only once per run
     private static boolean hasLoggedCompletion = false;
 
     public void log(String status, String message){
@@ -14,6 +15,7 @@ public class ValidationLogger implements AutoCloseable {
         log("FAILURE", reason);
     }
 
+    // AutoCloseable: called automatically by try-with-resources
     @Override
     public void close(){
         if(!hasLoggedCompletion){
